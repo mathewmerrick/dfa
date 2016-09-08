@@ -1,5 +1,5 @@
 # CPTS 322
-## Devs
+## Devs:
 > Jomar Dimaculangan
 > Mathew Merrick 
 > Devon Honig
