@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XML-Parser")]
+[assembly: AssemblyTitle("FSA-Automata")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("XML-Parser")]
+[assembly: AssemblyProduct("FSA-Automata")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0938518a-7afe-4ac0-9cfb-78231106bbcd")]
+[assembly: Guid("dde72d92-886c-4586-811a-837931b976d9")]
 
 // Version information for an assembly consists of the following four values:
 //
