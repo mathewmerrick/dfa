@@ -1,0 +1,16 @@
+<employee>
+    <id>1001</id>
+    <name>John</name>
+    <position>Developer</position>
+    <country>USA</country>
+    <projects>
+        <project>
+            <code>Orlando</code>
+            <budget>1000</budget>
+        </project>
+        <project>
+            <code>Rocket</code>
+            <budget>7000</budget>
+        </project>
+    </projects>
+</employee>

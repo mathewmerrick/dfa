@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<file>
+  <input>Input String</input>
+  <compare>Output String</compare>
+  <equal>False</equal>
+</file>
