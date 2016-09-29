@@ -1,9 +1,7 @@
 # CPTS 322
 ## Devs
-- Jomar Dimaculangan
-- Mathew Merrick 
-- Devon Honig
+- Jomar Dimaculangan (Contact Person) : j.dimaculangan@wsu.edu
+- Mathew Merrick : 
+- Devon Honig : 
 
-
-During the week of lecture 5, we were an FSA simulator to be our project.
-
+git-lucky will be creating a deterministic finite automata machine which wll allow users to create and edit an automata program.
