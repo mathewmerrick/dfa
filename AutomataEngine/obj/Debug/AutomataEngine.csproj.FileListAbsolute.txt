@@ -1,0 +1,5 @@
+C:\Users\m\Code\Homework\cpts-322\AutomataEngine\obj\Debug\AutomataEngine.csprojResolveAssemblyReference.cache
+C:\Users\m\Code\Homework\cpts-322\AutomataEngine\bin\Debug\AutomataEngine.dll
+C:\Users\m\Code\Homework\cpts-322\AutomataEngine\bin\Debug\AutomataEngine.pdb
+C:\Users\m\Code\Homework\cpts-322\AutomataEngine\obj\Debug\AutomataEngine.dll
+C:\Users\m\Code\Homework\cpts-322\AutomataEngine\obj\Debug\AutomataEngine.pdb
