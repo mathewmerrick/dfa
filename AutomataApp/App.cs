@@ -14,7 +14,7 @@ namespace AutomataApp {
 
             // Hardcoded Example:
 
-            // XAML contains states, and a string
+            // XML contains states, and a string
 
             //EX:
             //State A:
@@ -23,14 +23,14 @@ namespace AutomataApp {
             //    Path: 0, C
 
             //State B:
-            //            Transition
-            //            Path: 0, A
-            //            Path: 1, C
+            //    Transition
+            //    Path: 0, A
+            //    Path: 1, C
 
-            //        State C:
-            //            Accepting
+            //State C:
+            //    Accepting
 
-            //        Open XAML file, connect states with each other
+            //        Open XML file, connect states with each other
 
             Console.WriteLine(automata.TestString("1011"));
 
