@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutomataEngine;
 
 namespace AutomataApp {
-    class Program {
+    class App {
         static void Main(string[] args) {
 
             AutomataGraph automata = new AutomataGraph();

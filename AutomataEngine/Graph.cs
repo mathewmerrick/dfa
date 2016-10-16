@@ -29,16 +29,6 @@ namespace AutomataEngine {
             // target B
             // weight 0
             
-        public class Path {
-            public int Weight; 
-            public char Target;
-
-            public Path(int weight, char target) {
-                Weight = weight;
-                Target = target;
-            }
-
-        }
 
         public char AddPath(char target) {
 
@@ -80,10 +70,10 @@ namespace AutomataEngine {
 
 
         private bool TryString(string word, char currentState) {
-            if (word.Length == 0 && States[currentState].Type == "Accepting") {
-                return true;
-            }
-            if (word.Length == 0) {
+            if (word.Length == 0)  {
+                if (States[currentState].Type == "Accepting") {
+                    return true;
+                }
                 return false;
             }
 

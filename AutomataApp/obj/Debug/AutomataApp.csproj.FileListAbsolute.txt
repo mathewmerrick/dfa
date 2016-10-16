@@ -6,3 +6,6 @@ C:\Users\m\Code\Homework\cpts-322\AutomataApp\bin\Debug\AutomataEngine.pdb
 C:\Users\m\Code\Homework\cpts-322\AutomataApp\obj\Debug\AutomataApp.csprojResolveAssemblyReference.cache
 C:\Users\m\Code\Homework\cpts-322\AutomataApp\obj\Debug\AutomataApp.exe
 C:\Users\m\Code\Homework\cpts-322\AutomataApp\obj\Debug\AutomataApp.pdb
+C:\Users\m\Code\Homework\cpts-322\git-lucky\AutomataApp\bin\Debug\AutomataApp.exe.config
+C:\Users\m\Code\Homework\cpts-322\git-lucky\AutomataApp\obj\Debug\AutomataApp.exe
+C:\Users\m\Code\Homework\cpts-322\git-lucky\AutomataApp\obj\Debug\AutomataApp.pdb
