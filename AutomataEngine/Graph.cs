@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AutomataEngine {
     public class AutomataGraph {
@@ -23,6 +24,11 @@ namespace AutomataEngine {
                 Paths =  new Dictionary<int, char>(); //Path A: 0
             }
 
+            public State(string type) {
+                Type = type;
+                Paths = new Dictionary<int, char>(); //Path A: 0
+            }
+
         }
 
         // A->B, weight 0
@@ -37,6 +43,66 @@ namespace AutomataEngine {
             }
             return target;
         }
+
+
+        public void Read(string filename) {
+            XDocument doc = XDocument.Load(filename);
+
+            foreach (XElement element in doc.Root.Elements()) {
+
+                string name = element.Attribute("name").Value.ToString();
+
+
+
+                char stateName = Convert.ToChar(element.Attribute("name").Value);
+                string type = element.Attribute("type").Value.ToString();
+
+                State s = new State(type);
+
+                Console.WriteLine($"State: {name} {type}");
+
+                foreach (XElement xel in element.Elements()) {
+
+                    int weight = Convert.ToInt32(xel.Attribute("weight").Value);
+                    char target = Convert.ToChar(xel.Attribute("target").Value);
+
+
+
+                    Console.WriteLine($"   Path: weight = {weight} target = {target}");
+
+                    //s.Paths[weight] = target;
+
+                    s.Paths.Add(weight, target);
+                }
+                //States[stateName] = s;
+
+                States.Add(stateName, s);
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public AutomataGraph(string filename) {
+   
+            States = new Dictionary<char, State>();
+            Read(filename);
+        }
+
+
 
 
         public AutomataGraph() {
