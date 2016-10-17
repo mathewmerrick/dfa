@@ -31,8 +31,22 @@ namespace AutomataApp {
             //    Accepting
 
             //        Open XML file, connect states with each other
+            
+            Console.WriteLine("\nType 'q' to quit");
+            while (true) {
+                Console.Write("Enter a string to check in DFA: ");
+                string input = Console.ReadLine();
 
-            Console.WriteLine(automata.TestString("1011"));
+                if (input == "q") {
+                    break;
+                }
+
+                // 1011 works
+                Console.WriteLine(automata.TestString(input));
+
+            }
+
+            
 
 
         }
