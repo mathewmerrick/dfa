@@ -145,7 +145,7 @@ namespace AutomataEngine {
         public bool TestString(string word) {
             char accepting = '\0';
             foreach (char state in States.Keys) {
-                if (States[state].Type == "Accepting") {
+                if (States[state].Type == "Starting") {
                     accepting = state;
                 }
             }
