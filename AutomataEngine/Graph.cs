@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
@@ -67,33 +68,45 @@ namespace AutomataEngine {
                     char target = Convert.ToChar(xel.Attribute("target").Value);
 
 
-
                     Console.WriteLine($"   Path: weight = {weight} target = {target}");
-
-                    //s.Paths[weight] = target;
 
                     s.Paths.Add(weight, target);
                 }
-                //States[stateName] = s;
 
                 States.Add(stateName, s);
             }
 
         }
 
+        public string AddState(char stateName, string type) {
+            if ((type != "Starting") && (type != "Transition") && (type != "Accepting")) {
+                return "Invalid state type";
+            }
+            
+            if (!States.ContainsKey(stateName)) {
+                States[stateName] = new State(type);
+            }
+            else {
+                return "State already exists.";
+            }
+            return "State successfully created.";
+        }
+
+        public string AddPath(char stateName, int weight, char target) {
+
+            if (States[stateName] == null) {
+                return "State does not exist";
+            }
+
+            if (States[stateName].Paths == null) {
+                States[stateName].Paths = new Dictionary<int, char>();
+            }
+
+            States[stateName].Paths[weight] = target;
+            return "Path successfully created";
 
 
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 
         public AutomataGraph(string filename) {
@@ -108,30 +121,35 @@ namespace AutomataEngine {
         public AutomataGraph() {
             States = new Dictionary<char, State>();
 
-            ////////////////////////////////////////
-            if (!States.ContainsKey('A')) {
-                States['A'] = new State();
-            }
-            States['A'].Type = "Starting";
-            States['A'].Paths[0] ='C';
-            States['A'].Paths[1] = 'B';
-            ////////////////////////////////////////
-            if (!States.ContainsKey('B')) {
-                States['B'] = new State();
-            }
-            States['B'].Type = "Transition";
-            States['B'].Paths[0] = 'A';
-            States['B'].Paths[1] = 'C';
-            ////////////////////////////////////////
-            if (!States.ContainsKey('C')) {
-                States['C'] = new State();
-            }
-            States['C'].Type = "Accepting";
+            //////////////////////////////////////////
+            //if (!States.ContainsKey('A')) {
+            //    States['A'] = new State();
+            //}
+            //States['A'].Type = "Starting";
+            //States['A'].Paths[0] ='C';
+            //States['A'].Paths[1] = 'B';
+            //////////////////////////////////////////
+            //if (!States.ContainsKey('B')) {
+            //    States['B'] = new State();
+            //}
+            //States['B'].Type = "Transition";
+            //States['B'].Paths[0] = 'A';
+            //States['B'].Paths[1] = 'C';
+            //////////////////////////////////////////
+            //if (!States.ContainsKey('C')) {
+            //    States['C'] = new State();
+            //}
+            //States['C'].Type = "Accepting";
         }
 
         public bool TestString(string word) {
-
-            return TryString(word, 'A');
+            char accepting = '\0';
+            foreach (char state in States.Keys) {
+                if (States[state].Type == "Accepting") {
+                    accepting = state;
+                }
+            }
+            return TryString(word, accepting);
         }
 
 
