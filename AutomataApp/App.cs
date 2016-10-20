@@ -102,14 +102,14 @@ namespace AutomataApp {
 
 
 
-            
-            Console.WriteLine("\nType 'q' to quit");
+            Console.WriteLine("\nType 'check' to check if string exists in FA");
+            Console.WriteLine("Type 'quit' to quit");
             Console.WriteLine("Type 'save' to save");
             while (true) {
-                Console.Write("Enter a string to check in DFA: ");
+                Console.Write(":> ");
                 string input = Console.ReadLine();
 
-                if (input == "q") {
+                if (input == "quit") {
                     break;
                 }
                 if (input == "save") {
@@ -118,8 +118,12 @@ namespace AutomataApp {
                     continue;
                 }
 
-                // 1011 works
-                Console.WriteLine(automata.TestString(input));
+                if (input == "check") {
+                    // 1011 works with default
+                    Console.Write("Enter a string to check in DFA: ");
+                    Console.WriteLine(automata.TestString(Console.ReadLine()));
+                }
+
 
             }
         }
