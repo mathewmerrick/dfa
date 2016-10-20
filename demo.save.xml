@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<automata>
+  <state name="A" type="Starting">
+    <path weight="0" target="C" />
+    <path weight="1" target="B" />
+  </state>
+  <state name="B" type="Transition">
+    <path weight="0" target="A" />
+    <path weight="1" target="C" />
+  </state>
+  <state name="C" type="Accepting" />
+</automata>

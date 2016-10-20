@@ -22,7 +22,7 @@ namespace AutomataEngine {
             // Default state is transition
             public State() {
                 Type = "Transition";
-                Paths =  new Dictionary<int, char>(); //Path A: 0
+                Paths = new Dictionary<int, char>(); //Path A: 0
             }
 
             public State(string type) {
@@ -33,9 +33,9 @@ namespace AutomataEngine {
         }
 
         // A->B, weight 0
-            // target B
-            // weight 0
-            
+        // target B
+        // weight 0
+
 
         public char AddPath(char target) {
 
@@ -44,6 +44,32 @@ namespace AutomataEngine {
             }
             return target;
         }
+
+        public void Save(string filename) {
+            XDocument doc = new XDocument(
+                new XElement("automata"));
+
+            foreach (char state in States.Keys) {
+                doc.Root.Add(new XElement("state", new XAttribute("name", state), new XAttribute("type", States[state].Type)));
+
+
+            }
+
+            foreach (XElement element in doc.Descendants("state")) {
+                char state = Convert.ToChar(element.Attribute("name").Value);
+
+                foreach (int path in States[state].Paths.Keys) {
+                    element.Add(new XElement("path", new XAttribute("weight", path), new XAttribute("target", States[state].Paths[path])));
+                }
+            }
+
+            // When required, change this arg to filename
+            doc.Save("../../../demo.save.xml");
+        }
+
+
+
+
 
 
         public void Read(string filename) {

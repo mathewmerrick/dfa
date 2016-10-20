@@ -104,12 +104,18 @@ namespace AutomataApp {
 
             
             Console.WriteLine("\nType 'q' to quit");
+            Console.WriteLine("Type 'save' to save");
             while (true) {
                 Console.Write("Enter a string to check in DFA: ");
                 string input = Console.ReadLine();
 
                 if (input == "q") {
                     break;
+                }
+                if (input == "save") {
+                    automata.Save("thiscanbechanged");
+                    Console.WriteLine("FA Saved.");
+                    continue;
                 }
 
                 // 1011 works
