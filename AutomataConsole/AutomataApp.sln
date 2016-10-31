@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomataApp", "AutomataApp.csproj", "{FC8FBB55-4A79-4013-ABE4-E75C8CF975FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomataApp", "AutomataApp.csproj", "{09886F28-329A-4353-A6EF-6B46FF5E2497}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomataEngine", "..\AutomataEngine\AutomataEngine.csproj", "{79F2C477-3749-417F-991A-7A0993BB8B49}"
 EndProject
@@ -13,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC8FBB55-4A79-4013-ABE4-E75C8CF975FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC8FBB55-4A79-4013-ABE4-E75C8CF975FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC8FBB55-4A79-4013-ABE4-E75C8CF975FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC8FBB55-4A79-4013-ABE4-E75C8CF975FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09886F28-329A-4353-A6EF-6B46FF5E2497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09886F28-329A-4353-A6EF-6B46FF5E2497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09886F28-329A-4353-A6EF-6B46FF5E2497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09886F28-329A-4353-A6EF-6B46FF5E2497}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79F2C477-3749-417F-991A-7A0993BB8B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79F2C477-3749-417F-991A-7A0993BB8B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F2C477-3749-417F-991A-7A0993BB8B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
