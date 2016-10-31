@@ -10,9 +10,7 @@ namespace AutomataApp {
         static void Main(string[] args) {
 
             AutomataGraph automata = null;
-
-
-
+            
             Console.WriteLine("Finite Automata Demo");
             Console.WriteLine("Type 'load' to load sample automata, or type 'start' to create automata");
             string selection = null;
