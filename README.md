@@ -12,7 +12,7 @@ In the root directory, there are three folders:
 - AutomataEngine: Load, Save and Create a DFA, and then test whether or not a string exists within the DFA
 - AutomataWPF: [In Progress] A workspace for a GUI later on
 
-AutomataConsole should be the primary interface at this time (10/31/2016)
+**AutomataConsole should be the primary interface at this time (10/31/2016)**
 
 When building and running AutomataConsole, the user is presented with a pseudo "shell" where specific commands can be run.
 
