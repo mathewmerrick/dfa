@@ -4,7 +4,7 @@
 - Mathew Merrick : 
 - Devon Honig : 
 
-git-lucky will be creating a deterministic finite automata machine which will allow users to create and edit an automata program.
+git-lucky will be creating a deterministic finite automata machine which will allow users to load, create, save and edit and check to see if a string exists within a DFA.
 
 In the root directory, there are three folders:
 
@@ -27,7 +27,7 @@ The DFA created by ```load demo``` has a structure as follows
 *State A:*
 - Starting
 - Path: 1, B
-- : 0, C
+- Path: 0, C
 
 *State B:*
 - Transition
@@ -55,7 +55,7 @@ The DFA created by ```start``` is as follows
 
 
 ---
-Known Bugs:
+Known Bugs / TODO's:
 
 - States can not be more than one character long 
 - Paths can only be a 1 or a 0
