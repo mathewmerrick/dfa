@@ -1,4 +1,6 @@
 # CPTS 322
+[![Build Status](https://build.mathewmerrick.com/buildStatus/icon?job=git-lucky)](https://build.mathewmerrick.com/job/git-lucky)
+
 ## Devs
 - Jomar Dimaculangan (Contact Person) : j.dimaculangan@wsu.edu
 - Mathew Merrick : 
