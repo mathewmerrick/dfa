@@ -8,6 +8,11 @@ using AutomataEngine;
 namespace AutomataApp.ViewModel {
     class MainViewModel {
 
+        // This is the main datasource for the View
+        // Event handlers that are fired from the view can call these methods, 
+        // which in turn can interact with the model(s)
+
+
         private AutomataGraph _automata;
 
         public MainViewModel() {

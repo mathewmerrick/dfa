@@ -22,6 +22,9 @@ namespace AutomataApp {
     /// </summary>
     public partial class MainWindow: Window {
 
+        // Business logic should not be put here, only logic pertaining to the presentation of information
+
+
         private MainViewModel VM;
 
         public MainWindow() {
