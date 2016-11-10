@@ -6,14 +6,25 @@
         xmlns:local="clr-namespace:AutomataApp"
         xmlns:Properties="clr-namespace:AutomataApp.Properties" x:Class="AutomataApp.MainWindow"
         mc:Ignorable="d"
-        Title="Automata App - [Git-Lucky]" Height="350" Width="525"  BorderBrush="Black" OpacityMask="Black">
-    <Canvas>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
+        Title="Automata App - [Git-Lucky]" Height="540" Width="775.667"  BorderBrush="Black" OpacityMask="Black">
+    <Grid>
+        <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
+            <MenuItem Header="_File" Background="White">
                 <MenuItem Header="_Open" Click="MenuItemOpen_OnClick"/>
                 <MenuItem Header="_Save"/>
             </MenuItem>
         </Menu>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  Background="#FFB31E1E" Margin="0,18,-0.333,77.667">
 
-    </Canvas>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,17.96,0,103.803" >
+                <WrapPanel x:Name="AutomataPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </StackPanel>
+
+        </ScrollViewer>
+        <Button x:Name="Add" Click="AddState" Content="Add State" HorizontalAlignment="Left" Margin="171.981,0,0,39.374" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="Delete" Click="DeleteState" Content="Delete State" Margin="171.981,0,0,11.364" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75"/>
+        <TextBox x:Name="textBox" GotFocus="TextBox_GotFocus" HorizontalAlignment="Left" Height="19.96" Margin="28,0,0,39.374" TextWrapping="Wrap" Text="State Name" VerticalAlignment="Bottom" Width="75"/>
+
+
+    </Grid>
 </Window>
