@@ -66,11 +66,15 @@ namespace AutomataApp {
                 VM.load(filename);
 
 
+
+
             }
             catch {
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBox.Show("Error in loading file", "Error", button);
             }
+
+
 
         }
 

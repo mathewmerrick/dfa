@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutomataApp"
         xmlns:Properties="clr-namespace:AutomataApp.Properties" x:Class="AutomataApp.MainWindow"
         mc:Ignorable="d"
-        Title="Automata App - [Git-Lucky]" Height="540" Width="822.334"  BorderBrush="Black" OpacityMask="Black">
+        Title="Automata App - [Git-Lucky]" Height="540" Width="911.667"  BorderBrush="Black" OpacityMask="Black">
     <Grid>
         <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
             <MenuItem Header="_File" Background="White">
@@ -21,36 +21,36 @@
             </StackPanel>
 
         </ScrollViewer>
-        <Button x:Name="Add" Click="AddStateButton" Content="Add State" HorizontalAlignment="Left" Margin="89,0,0,36" VerticalAlignment="Bottom" Width="78" Height="22"/>
-        <Button x:Name="Delete" Click="DeleteStateButton" Content="Delete State" Margin="172,0,0,36" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="78" Height="22"/>
+        <Button x:Name="Add" Click="AddStateButton" Content="Add State" HorizontalAlignment="Left" Margin="94,0,0,46" VerticalAlignment="Bottom" Width="78" Height="22"/>
+        <Button x:Name="Delete" Click="DeleteStateButton" Content="Delete State" Margin="177,0,0,46" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="78" Height="22"/>
 
-        <ComboBox x:Name="nameComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="9,0,0,37" Width="75" Height="22"/>
+        <ComboBox x:Name="nameComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="14,0,0,47" Width="75" Height="22"/>
 
-        <ComboBox x:Name="typeComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Width="74" Height="22">
+        <ComboBox x:Name="typeComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15,0,0,20" Width="74" Height="22">
             <ComboBoxItem Content="Starting"/>
             <ComboBoxItem Content="Transition"/>
             <ComboBoxItem Content="Accepting"/>
         </ComboBox>
 
-        <ComboBox x:Name="pathStartComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="297,0,433,37" Width="38" Height="22"/>
-        <ComboBox x:Name="pathWeightComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="340,0,390,36" Width="38" Height="22">
+        <ComboBox x:Name="pathStartComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="325,0,451,47" Width="38" Height="22"/>
+        <ComboBox x:Name="pathWeightComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="368,0,408,46" Width="38" Height="22">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="0"/>
         </ComboBox>
 
-        <ComboBox x:Name="pathEndComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="383,0,347,36" Width="38" Height="22"/>
+        <ComboBox x:Name="pathEndComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="411,0,365,46" Width="38" Height="22"/>
 
-        <Label x:Name="label" Content="Start" HorizontalAlignment="Center" Margin="301,0,433,11" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
-        <Label x:Name="label_Copy" Content="Weight" HorizontalAlignment="Center" Margin="335,0,385,11" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
-        <Label x:Name="label_Copy1" Content="End" HorizontalAlignment="Center" Margin="383,0,355,11" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
+        <Label x:Name="label" Content="Start" HorizontalAlignment="Center" Margin="329,0,451,21" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
+        <Label x:Name="label_Copy" Content="Weight" HorizontalAlignment="Center" Margin="363,0,403,21" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
+        <Label x:Name="label_Copy1" Content="End" HorizontalAlignment="Center" Margin="411,0,373,21" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
 
 
-        <Button x:Name="addPath" Click="AddPath_OnClickPath" Content="Add Path" HorizontalAlignment="Center" Margin="425,0,265,36" VerticalAlignment="Bottom" Width="78" Height="22"/>
-        <Button x:Name="deletePath" Click="DeletePath_OnClick" Content="Delete Path" HorizontalAlignment="Center" Margin="425,0,265,9" VerticalAlignment="Bottom" Width="78" Height="22"/>
+        <Button x:Name="addPath" Click="AddPath_OnClickPath" Content="Add Path" HorizontalAlignment="Center" Margin="453,0,283,46" VerticalAlignment="Bottom" Width="78" Height="22"/>
+        <Button x:Name="deletePath" Click="DeletePath_OnClick" Content="Delete Path" HorizontalAlignment="Center" Margin="453,0,283,19" VerticalAlignment="Bottom" Width="78" Height="22"/>
 
-        <TextBox x:Name="evaluateTextBox" GotFocus="TextBox_GotFocus" HorizontalAlignment="Right" Height="22" Margin="0,0,101,36" TextWrapping="Wrap" Text="Enter String to Evaluate" VerticalAlignment="Bottom" Width="136"/>
-        <Button x:Name="addPath_Copy" Click="Evaluate_OnClickPath" Content="Evaluate" HorizontalAlignment="right" Margin="0,0,21,36" VerticalAlignment="Bottom" Width="75" Height="22"/>
-        <Label x:Name="evalResult" Content="" HorizontalAlignment="Right" Margin="577,0,101,10" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462" Width="136"/>
+        <TextBox x:Name="evaluateTextBox" GotFocus="TextBox_GotFocus" HorizontalAlignment="Right" Height="22" Margin="0,0,96,46" TextWrapping="Wrap" Text="Enter String to Evaluate" VerticalAlignment="Bottom" Width="136"/>
+        <Button x:Name="addPath_Copy" Click="Evaluate_OnClickPath" Content="Evaluate" HorizontalAlignment="right" Margin="0,0,16,46" VerticalAlignment="Bottom" Width="75" Height="22"/>
+        <Label x:Name="evalResult" Content="" HorizontalAlignment="Right" Margin="0,0,96,20" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462" Width="136" BorderBrush="Black" BorderThickness="0" Height="27"/>
 
 
 
