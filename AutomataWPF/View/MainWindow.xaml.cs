@@ -90,8 +90,9 @@ namespace AutomataApp {
             if (WrapPanelIndex.ContainsKey(stateName)) {
                 AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[stateName] - 1);
                 WrapPanelIndex.Remove(stateName);
+                UpdateDropDowns();
             }
-
+            
 
         }
 
@@ -212,8 +213,6 @@ namespace AutomataApp {
         }
 
         private void DeletePath_OnClick(object sender, RoutedEventArgs e) {
-
-
 
             
         }
