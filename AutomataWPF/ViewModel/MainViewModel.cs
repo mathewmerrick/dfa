@@ -27,6 +27,7 @@ namespace AutomataApp.ViewModel {
             _automata = new AutomataGraph();
         }
 
+
         public void load(string filename) {
             _automata = new AutomataGraph();
             _automata.Read(filename);
@@ -34,6 +35,12 @@ namespace AutomataApp.ViewModel {
                 AutomataChanged?.Invoke(entry, new PropertyChangedEventArgs("State"));
             }
         }
+
+
+        public void save (string filename) {
+            _automata.Save(filename);
+        }
+
 
         public void addState(char name, string type) {
             _automata.AddState(name, type);
@@ -43,6 +50,10 @@ namespace AutomataApp.ViewModel {
             _automata.AddPath(startState, weight, targetState);
             var stateNameAndClass = new KeyValuePair<char, AutomataGraph.State>(startState, _automata.States[startState]);
             AutomataChanged?.Invoke( stateNameAndClass, new PropertyChangedEventArgs("State"));
+        }
+
+        public bool Evaluate(string eval) {
+            return _automata.TestString(eval);
         }
 
     }

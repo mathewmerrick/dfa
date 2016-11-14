@@ -64,7 +64,8 @@ namespace AutomataEngine {
             }
 
             // When required, change this arg to filename
-            doc.Save("../../../demo.save.xml");
+            //doc.Save("../../../demo.save.xml");
+            doc.Save(filename);
         }
 
 

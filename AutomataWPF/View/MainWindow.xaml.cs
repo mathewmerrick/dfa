@@ -65,8 +65,6 @@ namespace AutomataApp {
                 string filename = open.FileName;
                 VM.load(filename);
 
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBox.Show("Loaded Successfully", "Success", button);
 
             }
             catch {
@@ -93,8 +91,6 @@ namespace AutomataApp {
 
         public void DeleteStateButton(object sender, RoutedEventArgs e){
 
-
-
             char stateName = Convert.ToChar(nameComboBox.Text);
 
             if (WrapPanelIndex.ContainsKey(stateName)) {
@@ -110,8 +106,9 @@ namespace AutomataApp {
         // Clear a textbox on first click
         public void TextBox_GotFocus(object sender, RoutedEventArgs e){
             TextBox box = sender as TextBox;
-
+            
             box.Text = string.Empty;
+            evaluateTextBox.GotFocus -= TextBox_GotFocus;
         }
 
 
@@ -177,9 +174,6 @@ namespace AutomataApp {
         
 
 
-
-
-
         // Event handler for the Add Path button in the view
         private void AddPath_OnClickPath(object sender, RoutedEventArgs e) {
 
@@ -189,9 +183,6 @@ namespace AutomataApp {
                 || pathEndComboBox.Text.Length == 0) {
                 return;
             }
-
-
-            bool y = pathStartComboBox.Text.Equals('\0');
 
             char start = Convert.ToChar(pathStartComboBox.Text);
             int weight = Convert.ToInt32(pathWeightComboBox.Text);
@@ -223,8 +214,6 @@ namespace AutomataApp {
 
             
 
-
-
             string text = "Name: " + name.ToString() + "\n" + "Type: " + stateType + "\n" + "Paths: \n";
             foreach (int element in paths.Keys) {
                 text = text + element + "->" + paths[element] + "\n";
@@ -250,16 +239,14 @@ namespace AutomataApp {
 
                 AddRectangle(state.Key, ConvertStateToText(state.Key, state.Value.Type, state.Value.Paths));
                 
-                
-
-                int i = 0;
-                foreach (Border element in AutomataWrapPanel.Children) {
-                    if (element.Name.Length > 0) {
-                        WrapPanelIndex[Convert.ToChar(element.Name)] = i;
-                        i++;
-                    }
+                //int i = 0;
+                //foreach (Border element in AutomataWrapPanel.Children) {
+                //    if (element.Name.Length > 0) {
+                //        WrapPanelIndex[Convert.ToChar(element.Name)] = i;
+                //        i++;
+                //    }
                     
-                }
+                //}
 
 
 
@@ -272,6 +259,43 @@ namespace AutomataApp {
         private void DeletePath_OnClick(object sender, RoutedEventArgs e) {
 
             
+        }
+
+        private void MenuItemSave_OnClick(object sender, RoutedEventArgs e) {
+
+
+            SaveFileDialog save = new SaveFileDialog();
+
+            save.Filter = "Automata|*.xml";
+
+            try {
+                save.ShowDialog();
+                string filename = save.FileName;
+                VM.save(filename);
+                
+
+            }
+            catch {
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBox.Show("Error in loading file", "Error", button);
+            }
+        }
+
+        private void Evaluate_OnClickPath(object sender, RoutedEventArgs e) {
+            bool accepted = false;
+            try {
+                accepted = VM.Evaluate(evaluateTextBox.Text);
+            }
+            catch {
+                accepted = false;
+            }
+
+            if (accepted) {
+                evalResult.Content = "Accepted";
+            }
+            else {
+                evalResult.Content = "Not Accepted";
+            }
         }
     }
 
