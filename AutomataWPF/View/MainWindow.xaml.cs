@@ -98,7 +98,7 @@ namespace AutomataApp {
             char stateName = Convert.ToChar(nameComboBox.Text);
 
             if (WrapPanelIndex.ContainsKey(stateName)) {
-                AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[stateName] - 1);
+                AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[stateName]);
                 WrapPanelIndex.Remove(stateName);
                 UpdateDropDowns();
             }
@@ -138,12 +138,47 @@ namespace AutomataApp {
                 Foreground = new SolidColorBrush(Colors.White),
             };
 
-            Grid stateWrapper = new Grid();
-            stateWrapper.Name = stateName.ToString();
-            stateWrapper.Children.Add(state);
-            stateWrapper.Children.Add(stateDescription);
-            AutomataWrapPanel.Children.Add(stateWrapper);
+            Border b = new Border() {
+                Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000")),
+                Width = 100,
+                Height = 100,
+                BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF")),
+                BorderThickness = new Thickness(3),
+                Margin = new Thickness(10),
+
+            };
+            b.Child = stateDescription;
+            b.Name = stateName.ToString();
+
+
+
+            //Grid stateWrapper = new Grid();
+            //stateWrapper.Name = stateName.ToString();
+            //stateWrapper.Children.Add(state);
+            //stateWrapper.Children.Add(stateDescription);
+            //AutomataWrapPanel.Children.Add(stateWrapper);
+
+
+
+            if (WrapPanelIndex.ContainsKey(stateName)) {
+                AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[stateName]);
+
+                AutomataWrapPanel.Children.Insert(WrapPanelIndex[stateName], b);
+            }
+            else {
+                AutomataWrapPanel.Children.Add(b);
+                WrapPanelIndex[stateName] = AutomataWrapPanel.Children.Count - 1;
+            }
+
+            
+
         }
+
+        
+
+
+
+
 
         // Event handler for the Add Path button in the view
         private void AddPath_OnClickPath(object sender, RoutedEventArgs e) {
@@ -184,7 +219,7 @@ namespace AutomataApp {
         // This function is called (usually in the event handler below) to add a state to the view
         // Formats the appropriate text to the be added to rectangle state in the view,
         // also adds the state name with the appropriate index to the WrapPanelDictionary
-        private void AddState(char name, string stateType, Dictionary<int, char> paths) {
+        private string ConvertStateToText(char name, string stateType, Dictionary<int, char> paths) {
 
             
 
@@ -195,10 +230,11 @@ namespace AutomataApp {
                 text = text + element + "->" + paths[element] + "\n";
             }
 
-            AddRectangle(name, text);
+            //AddRectangle(name, text);
 
-            WrapPanelIndex[name] = AutomataWrapPanel.Children.Count - 1;
+            //WrapPanelIndex[name] = AutomataWrapPanel.Children.Count - 1;
             UpdateDropDowns();
+            return text;
         }
 
 
@@ -211,18 +247,18 @@ namespace AutomataApp {
 
                 var state = (KeyValuePair<char, AutomataGraph.State>)sender;
 
-                if (WrapPanelIndex.ContainsKey(state.Key)) {
-                    //int index = state.Key;
-                    AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[state.Key]);
-                }
+
+                AddRectangle(state.Key, ConvertStateToText(state.Key, state.Value.Type, state.Value.Paths));
+                
                 
 
-                AddState(state.Key, state.Value.Type, state.Value.Paths);
-
                 int i = 0;
-                foreach (Grid element in AutomataWrapPanel.Children) {
-                    WrapPanelIndex[Convert.ToChar(element.Name)] = i;
-                    i++;
+                foreach (Border element in AutomataWrapPanel.Children) {
+                    if (element.Name.Length > 0) {
+                        WrapPanelIndex[Convert.ToChar(element.Name)] = i;
+                        i++;
+                    }
+                    
                 }
 
 
