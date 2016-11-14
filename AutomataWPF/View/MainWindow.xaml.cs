@@ -73,9 +73,9 @@ namespace AutomataApp {
                 string text = "Name: " + nameComboBox.Text + "\nType: " + typeComboBox.Text + "\nPaths: ";
                 VM.addState(Convert.ToChar(nameComboBox.Text), typeComboBox.Text);
 
-                AddRectangle(text);
+                AddRectangle(Convert.ToChar(nameComboBox.Text), text);
 
-                WrapPanelIndex[Convert.ToChar(nameComboBox.Text)] = AutomataWrapPanel.Children.Count;
+                WrapPanelIndex[Convert.ToChar(nameComboBox.Text)] = AutomataWrapPanel.Children.Count - 1;
                 UpdateDropDowns();
             }
         }
@@ -109,7 +109,7 @@ namespace AutomataApp {
 
         // Converts a string of text, which is pre-formatted with state name, 
         // state type and paths to a visual rectangle to add in the box
-        private void AddRectangle(string text) {
+        private void AddRectangle(char stateName, string text) {
 
             Rectangle state = new Rectangle {
                 Width = 100,
@@ -119,7 +119,7 @@ namespace AutomataApp {
                 Margin = new Thickness(10)
             };
 
-            TextBlock stateName = new TextBlock {
+            TextBlock stateDescription = new TextBlock {
                 Text = text,
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
@@ -129,8 +129,9 @@ namespace AutomataApp {
             };
 
             Grid stateWrapper = new Grid();
+            stateWrapper.Name = stateName.ToString();
             stateWrapper.Children.Add(state);
-            stateWrapper.Children.Add(stateName);
+            stateWrapper.Children.Add(stateDescription);
             AutomataWrapPanel.Children.Add(stateWrapper);
         }
 
@@ -184,9 +185,9 @@ namespace AutomataApp {
                 text = text + element + "->" + paths[element] + "\n";
             }
 
-            AddRectangle(text);
+            AddRectangle(name, text);
 
-            WrapPanelIndex[name] = AutomataWrapPanel.Children.Count;
+            WrapPanelIndex[name] = AutomataWrapPanel.Children.Count - 1;
             UpdateDropDowns();
         }
 
@@ -201,12 +202,22 @@ namespace AutomataApp {
                 var state = (KeyValuePair<char, AutomataGraph.State>)sender;
 
                 if (WrapPanelIndex.ContainsKey(state.Key)) {
-                    AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[state.Key] - 1);
+                    //int index = state.Key;
+                    AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[state.Key]);
                 }
                 
 
                 AddState(state.Key, state.Value.Type, state.Value.Paths);
-                WrapPanelIndex[state.Key] = AutomataWrapPanel.Children.Count;
+
+                int i = 0;
+                foreach (Grid element in AutomataWrapPanel.Children) {
+                    WrapPanelIndex[Convert.ToChar(element.Name)] = i;
+                    i++;
+                }
+
+
+
+                //WrapPanelIndex[state.Key] = AutomataWrapPanel.Children.Count;
 
             }
             UpdateDropDowns();
