@@ -28,6 +28,7 @@ namespace AutomataApp.ViewModel {
         }
 
         public void load(string filename) {
+            _automata = new AutomataGraph();
             _automata.Read(filename);
             foreach (KeyValuePair<char, AutomataGraph.State> entry in _automata.States) {
                 AutomataChanged?.Invoke(entry, new PropertyChangedEventArgs("State"));

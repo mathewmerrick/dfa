@@ -46,6 +46,16 @@ namespace AutomataApp {
 
 
         private void MenuItemOpen_OnClick(object sender, RoutedEventArgs e) {
+
+            // Delete old index tracking
+            WrapPanelIndex = new Dictionary<char, int>();
+
+            // Clear dropdown
+            UpdateDropDowns();
+
+            // Flush Wrap Panel
+            AutomataWrapPanel.Children.Clear();
+
             OpenFileDialog open = new OpenFileDialog();
 
             open.Filter = "Automata|*.xml";
