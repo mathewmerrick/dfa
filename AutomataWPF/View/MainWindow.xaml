@@ -14,16 +14,40 @@
                 <MenuItem Header="_Save"/>
             </MenuItem>
         </Menu>
-        <ScrollViewer VerticalScrollBarVisibility="Auto"  Background="#FFB31E1E" Margin="0,18,-0.333,77.667">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  Background="Black" Margin="0,18,-0.333,77.667">
 
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,17.96,0,103.803" >
-                <WrapPanel x:Name="AutomataPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <WrapPanel x:Name="AutomataWrapPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </StackPanel>
 
         </ScrollViewer>
-        <Button x:Name="Add" Click="AddState" Content="Add State" HorizontalAlignment="Left" Margin="171.981,0,0,39.374" VerticalAlignment="Bottom" Width="75"/>
-        <Button x:Name="Delete" Click="DeleteState" Content="Delete State" Margin="171.981,0,0,11.364" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75"/>
-        <TextBox x:Name="textBox" GotFocus="TextBox_GotFocus" HorizontalAlignment="Left" Height="19.96" Margin="28,0,0,39.374" TextWrapping="Wrap" Text="State Name" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="Add" Click="AddStateButton" Content="Add State" HorizontalAlignment="Left" Margin="173,0,0,37" VerticalAlignment="Bottom" Width="78" Height="22"/>
+        <Button x:Name="Delete" Click="DeleteStateButton" Content="Delete State" Margin="256,0,0,37" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="78" Height="22"/>
+
+        <ComboBox x:Name="nameComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="9,0,0,37" Width="159" Height="22"/>
+
+        <ComboBox x:Name="typeComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Width="158" Height="22">
+            <ComboBoxItem Content="Starting"/>
+            <ComboBoxItem Content="Transition"/>
+            <ComboBoxItem Content="Accepting"/>
+        </ComboBox>
+
+        <ComboBox x:Name="pathStartComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="402,0,0,32" Width="38" Height="22"/>
+        <ComboBox x:Name="pathWeightComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="445,0,0,32" Width="38" Height="22">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="0"/>
+        </ComboBox>
+
+        <ComboBox x:Name="pathEndComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="488,0,0,32" Width="38" Height="22"/>
+
+        <Label x:Name="label" Content="Start" HorizontalAlignment="Left" Margin="402,0,0,6" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
+        <Label x:Name="label_Copy" Content="Weight" HorizontalAlignment="Left" Margin="441,0,0,6" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
+        <Label x:Name="label_Copy1" Content="End" HorizontalAlignment="Left" Margin="494,0,0,6" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462"/>
+
+
+        <Button x:Name="addPath" Click="AddPath_OnClickPath" Content="Add Path" HorizontalAlignment="Left" Margin="531,0,0,46" VerticalAlignment="Bottom" Width="78" Height="22"/>
+        <Button x:Name="deletePath" Click="DeletePath_OnClick" Content="Delete Path" HorizontalAlignment="Left" Margin="531,0,0,19" VerticalAlignment="Bottom" Width="78" Height="22"/>
+
 
 
     </Grid>

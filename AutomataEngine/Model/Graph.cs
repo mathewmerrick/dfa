@@ -131,7 +131,6 @@ namespace AutomataEngine {
             States[stateName].Paths[weight] = target;
             return "Path successfully created";
 
-
         }
 
 
