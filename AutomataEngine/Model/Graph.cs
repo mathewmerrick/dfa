@@ -126,19 +126,24 @@ namespace AutomataEngine {
             if ((type != "Starting") && (type != "Transition") && (type != "Accepting")) {
                 return false;
             }
+
+            if (type == "Starting") {   
+                if (starting) {         // there already is a starting state, and the state trying to be inserted is a starting
+                    return false;
+                }
+                starting = true;        // There is no existing starting state, so now there is a starting state
+            }
             
-            if (!States.ContainsKey(stateName)) {
+
+            if (!States.ContainsKey(stateName)) {   // the state does not exist, but it can be inserted
+
                 States[stateName] = new State(type);
 
-                if (starting == false && type == "Starting") {
-                    starting = true;
-                }
-                
+                return true;
             }
-            else {
-                return false;
-            }
-            return true;
+
+            return false;
+
         }
 
 
