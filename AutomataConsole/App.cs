@@ -27,16 +27,17 @@ namespace AutomataApp {
                 if (selection == "load demo") {
                     Console.WriteLine("Loading demo.xml");
                     automata = new AutomataGraph("../../../demo.xml");
+                    break;
                 }
                 if (selection == "load existing") {
                     Console.Write("Please enter a file name, including the full path: ");
                     string filename = Console.ReadLine();
                     try {
                         automata = new AutomataGraph(filename);
+                        break;
                     }
                     catch {
                         Console.WriteLine("Automata Load Failed");
-                        continue;
                     }
                 }
 
@@ -47,7 +48,7 @@ namespace AutomataApp {
                     Console.WriteLine("Type 'done' to finish building");
                     Console.WriteLine("Type 'add state' to create new state");
                     Console.WriteLine("Type 'add path' to create new path between states");
-					Console.WriteLine("Type 'delete state' to delete an already existing state");
+                    Console.WriteLine("Type 'delete state' to delete an already existing state");
                     while (true) {
                         Console.Write(":> ");
                         string sel = Console.ReadLine();
@@ -84,66 +85,69 @@ namespace AutomataApp {
 
                                 break;
 
-							case "delete state":
-								Console.WriteLine("Enter the starting state for the desired path: ( ex. 'A', 'B' ...)");
-								Console.Write(":> ");
-								char deleteName = Convert.ToChar(Console.ReadLine());
-								Console.WriteLine(automata.DeleteState(deleteName));
-								break;
-						}
+                            case "delete state":
+                                Console.WriteLine("Enter the starting state for the desired path: ( ex. 'A', 'B' ...)");
+                                Console.Write(":> ");
+                                char deleteName = Convert.ToChar(Console.ReadLine());
+                                Console.WriteLine(automata.DeleteState(deleteName));
+                                break;
+                        }
                     }
 
                 }
-
-                // Hardcoded Example:
-
-                // XML contains states, and a string
-
-                //EX:
-                //State A:
-                //    Starting
-                //    Path: 1, B
-                //    Path: 0, C
-
-                //State B:
-                //    Transition
-                //    Path: 0, A
-                //    Path: 1, C
-
-                //State C:
-                //    Accepting
-
-                //        Open XML file, connect states with each other
+            }
 
 
-                Console.WriteLine("\nType 'check' to check if string exists in FA");
-                Console.WriteLine("Type 'quit' to quit");
-                Console.WriteLine("Type 'save' to save");
-                while (true) {
-                    Console.Write(":> ");
-                    string input = Console.ReadLine();
+            // Hardcoded Example:
 
-                    if (input == "quit") {
-                        break;
-                    }
-                    if (input == "save") {
-                        automata.Save("../../../ demo.save.xml"); // this is the default demo save, can be changed once final
-                        Console.WriteLine("FA Saved.");
-                        continue;
-                    }
+            // XML contains states, and a string
 
-                    if (input == "check") {
-                        // 1011 works with default
-                        Console.Write("Enter a string to check in DFA: ");
-                        Console.WriteLine(automata.TestString(Console.ReadLine()) ? "Accepted":"Not Accepted");
-                    }
+            //EX:
+            //State A:
+            //    Starting
+            //    Path: 1, B
+            //    Path: 0, C
+
+            //State B:
+            //    Transition
+            //    Path: 0, A
+            //    Path: 1, C
+
+            //State C:
+            //    Accepting
+
+            //        Open XML file, connect states with each other
 
 
+
+            Console.WriteLine("\nType 'check' to check if string exists in FA");
+            Console.WriteLine("Type 'quit' to quit");
+            Console.WriteLine("Type 'save' to save");
+            while (true) {
+                Console.Write(":> ");
+                string input = Console.ReadLine();
+
+                if (input == "quit") {
+                    return;
                 }
+                if (input == "save") {
+                    automata.Save("../../../ demo.save.xml"); // this is the default demo save, can be changed once final
+                    Console.WriteLine("FA Saved.");
+                    continue;
+                }
+
+                if (input == "check") {
+                    // 1011 works with default
+                    Console.Write("Enter a string to check in DFA: ");
+                    Console.WriteLine(automata.TestString(Console.ReadLine()) ? "Accepted" : "Not Accepted");
+                }
+
+
             }
         }
     }
 }
+
 
 ////            States = new Dictionary<char, State>();
 
