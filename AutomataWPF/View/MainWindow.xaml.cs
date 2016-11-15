@@ -63,32 +63,29 @@ namespace AutomataApp {
             try {
                 open.ShowDialog();
                 string filename = open.FileName;
-                VM.load(filename);
-
-
-
+                VM.Load(filename);
 
             }
             catch {
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBox.Show("Error in loading file", "Error", button);
             }
-
-
-
         }
 
         public void AddStateButton(object sender, RoutedEventArgs e){
 
 
-            if (WrapPanelIndex.ContainsKey(Convert.ToChar(nameComboBox.Text)) == false) {
-                string text = "Name: " + nameComboBox.Text + "\nType: " + typeComboBox.Text + "\nPaths: ";
-                VM.addState(Convert.ToChar(nameComboBox.Text), typeComboBox.Text);
+            if (WrapPanelIndex.ContainsKey(Convert.ToChar(nameComboBox.Text)) == false) {   // State doesn't exist in the view
 
-                AddRectangle(Convert.ToChar(nameComboBox.Text), text);
+                if (VM.addState(Convert.ToChar(nameComboBox.Text), typeComboBox.Text)) {    // State doesn't exist in the engine, so it is added in this statement
 
-                WrapPanelIndex[Convert.ToChar(nameComboBox.Text)] = AutomataWrapPanel.Children.Count - 1;
-                UpdateDropDowns();
+                    string text = "Name: " + nameComboBox.Text + "\nType: " + typeComboBox.Text + "\nPaths: ";
+
+                    AddRectangle(Convert.ToChar(nameComboBox.Text), text);
+
+                    WrapPanelIndex[Convert.ToChar(nameComboBox.Text)] = AutomataWrapPanel.Children.Count - 1;
+                    UpdateDropDowns();
+                }
             }
         }
 
@@ -98,12 +95,13 @@ namespace AutomataApp {
             char stateName = Convert.ToChar(nameComboBox.Text);
 
             if (WrapPanelIndex.ContainsKey(stateName)) {
+
+                VM.DeleteState(stateName);
+
                 AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[stateName]);
                 WrapPanelIndex.Remove(stateName);
                 UpdateDropDowns();
             }
-            
-
         }
 
 
@@ -121,14 +119,6 @@ namespace AutomataApp {
         // Converts a string of text, which is pre-formatted with state name, 
         // state type and paths to a visual rectangle to add in the box
         private void AddRectangle(char stateName, string text) {
-
-            Rectangle state = new Rectangle {
-                Width = 100,
-                Height = 100,
-                StrokeThickness = 3,
-                Stroke = new SolidColorBrush(Colors.White),
-                Margin = new Thickness(10)
-            };
 
             TextBlock stateDescription = new TextBlock {
                 Text = text,
@@ -148,18 +138,9 @@ namespace AutomataApp {
                 Margin = new Thickness(10),
 
             };
+
             b.Child = stateDescription;
             b.Name = stateName.ToString();
-
-
-
-            //Grid stateWrapper = new Grid();
-            //stateWrapper.Name = stateName.ToString();
-            //stateWrapper.Children.Add(state);
-            //stateWrapper.Children.Add(stateDescription);
-            //AutomataWrapPanel.Children.Add(stateWrapper);
-
-
 
             if (WrapPanelIndex.ContainsKey(stateName)) {
                 AutomataWrapPanel.Children.RemoveAt(WrapPanelIndex[stateName]);
@@ -170,9 +151,6 @@ namespace AutomataApp {
                 AutomataWrapPanel.Children.Add(b);
                 WrapPanelIndex[stateName] = AutomataWrapPanel.Children.Count - 1;
             }
-
-            
-
         }
 
         
@@ -216,16 +194,11 @@ namespace AutomataApp {
         // also adds the state name with the appropriate index to the WrapPanelDictionary
         private string ConvertStateToText(char name, string stateType, Dictionary<int, char> paths) {
 
-            
-
             string text = "Name: " + name.ToString() + "\n" + "Type: " + stateType + "\n" + "Paths: \n";
             foreach (int element in paths.Keys) {
                 text = text + element + "->" + paths[element] + "\n";
             }
 
-            //AddRectangle(name, text);
-
-            //WrapPanelIndex[name] = AutomataWrapPanel.Children.Count - 1;
             UpdateDropDowns();
             return text;
         }
@@ -243,30 +216,14 @@ namespace AutomataApp {
 
                 AddRectangle(state.Key, ConvertStateToText(state.Key, state.Value.Type, state.Value.Paths));
                 
-                //int i = 0;
-                //foreach (Border element in AutomataWrapPanel.Children) {
-                //    if (element.Name.Length > 0) {
-                //        WrapPanelIndex[Convert.ToChar(element.Name)] = i;
-                //        i++;
-                //    }
-                    
-                //}
-
-
-
-                //WrapPanelIndex[state.Key] = AutomataWrapPanel.Children.Count;
-
             }
             UpdateDropDowns();
         }
 
-        private void DeletePath_OnClick(object sender, RoutedEventArgs e) {
+        private void DeletePath_OnClick(object sender, RoutedEventArgs e) {}
 
-            
-        }
 
         private void MenuItemSave_OnClick(object sender, RoutedEventArgs e) {
-
 
             SaveFileDialog save = new SaveFileDialog();
 
@@ -275,7 +232,7 @@ namespace AutomataApp {
             try {
                 save.ShowDialog();
                 string filename = save.FileName;
-                VM.save(filename);
+                VM.Save(filename);
                 
 
             }

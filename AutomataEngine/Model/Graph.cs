@@ -12,6 +12,7 @@ namespace AutomataEngine {
     public class AutomataGraph {
         public Dictionary<char, State> States;
 
+        private bool starting = false;
 
         public class State {
             public string Type; // Starting, Accepting, Transition
@@ -105,19 +106,43 @@ namespace AutomataEngine {
 
         }
 
-        public string AddState(char stateName, string type) {
+
+        public bool DeleteState(char stateName) {
+            if (!States.ContainsKey(stateName)) {
+                return false;
+            }
+
+            if (States[stateName].Type == "Starting") { // The starting state has been deleted, flip the boolean to allow                   
+                starting = false;                       // a new state to be created
+            }
+
+            States.Remove(stateName);
+            
+            return true;
+        }
+
+
+        public bool AddState(char stateName, string type) {
             if ((type != "Starting") && (type != "Transition") && (type != "Accepting")) {
-                return "Invalid state type";
+                return false;
             }
             
             if (!States.ContainsKey(stateName)) {
                 States[stateName] = new State(type);
+
+                if (starting == false && type == "Starting") {
+                    starting = true;
+                }
+                
             }
             else {
-                return "State already exists.";
+                return false;
             }
-            return "State successfully created.";
+            return true;
         }
+
+
+
 
         public string AddPath(char stateName, int weight, char target) {
 

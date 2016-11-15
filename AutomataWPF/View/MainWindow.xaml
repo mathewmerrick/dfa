@@ -21,12 +21,12 @@
             </StackPanel>
 
         </ScrollViewer>
-        <Button x:Name="Add" Click="AddStateButton" Content="Add State" HorizontalAlignment="Left" Margin="94,0,0,46" VerticalAlignment="Bottom" Width="78" Height="22"/>
-        <Button x:Name="Delete" Click="DeleteStateButton" Content="Delete State" Margin="177,0,0,46" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="78" Height="22"/>
+        <Button x:Name="Add" Click="AddStateButton" Content="Add State" HorizontalAlignment="Left" Margin="127,0,0,45" VerticalAlignment="Bottom" Width="78" Height="22"/>
+        <Button x:Name="Delete" Click="DeleteStateButton" Content="Delete State" Margin="210,0,0,45" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="78" Height="22"/>
 
-        <ComboBox x:Name="nameComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="14,0,0,47" Width="75" Height="22"/>
+        <ComboBox x:Name="nameComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,46" Width="112" Height="22"/>
 
-        <ComboBox x:Name="typeComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15,0,0,20" Width="74" Height="22">
+        <ComboBox x:Name="typeComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,19" Width="112" Height="22">
             <ComboBoxItem Content="Starting"/>
             <ComboBoxItem Content="Transition"/>
             <ComboBoxItem Content="Accepting"/>

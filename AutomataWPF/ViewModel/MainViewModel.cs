@@ -28,7 +28,7 @@ namespace AutomataApp.ViewModel {
         }
 
 
-        public void load(string filename) {
+        public void Load(string filename) {
             _automata = new AutomataGraph();
             _automata.Read(filename);
             foreach (KeyValuePair<char, AutomataGraph.State> entry in _automata.States) {
@@ -37,13 +37,20 @@ namespace AutomataApp.ViewModel {
         }
 
 
-        public void save (string filename) {
+        public void Save (string filename) {
             _automata.Save(filename);
         }
 
+        public void DeleteState(char stateName) {
+            _automata.DeleteState(stateName);
+        }
 
-        public void addState(char name, string type) {
-            _automata.AddState(name, type);
+        public void DeletePath(char startState, int weight, char targetState) {
+            
+        }
+
+        public bool addState(char name, string type) {
+            return _automata.AddState(name, type);
         }
 
         public void addPath(char startState, int weight, char targetState) {
