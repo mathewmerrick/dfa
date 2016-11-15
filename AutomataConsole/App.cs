@@ -21,10 +21,7 @@ namespace AutomataApp {
                     Console.WriteLine();
                     break;
                 }
-                if (selection == "start") {
-                    Console.WriteLine();
-                    break;
-                }
+
 
 
                 if (selection == "load demo") {
@@ -111,8 +108,6 @@ namespace AutomataApp {
                 //        Open XML file, connect states with each other
 
 
-
-
                 Console.WriteLine("\nType 'check' to check if string exists in FA");
                 Console.WriteLine("Type 'quit' to quit");
                 Console.WriteLine("Type 'save' to save");
@@ -124,7 +119,7 @@ namespace AutomataApp {
                         break;
                     }
                     if (input == "save") {
-                        automata.Save("thiscanbechanged");
+                        automata.Save("../../../ demo.save.xml"); // this is the default demo save, can be changed once final
                         Console.WriteLine("FA Saved.");
                         continue;
                     }
@@ -132,7 +127,7 @@ namespace AutomataApp {
                     if (input == "check") {
                         // 1011 works with default
                         Console.Write("Enter a string to check in DFA: ");
-                        Console.WriteLine(automata.TestString(Console.ReadLine()));
+                        Console.WriteLine(automata.TestString(Console.ReadLine()) ? "Accepted":"Not Accepted");
                     }
 
 

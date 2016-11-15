@@ -210,6 +210,10 @@ namespace AutomataEngine {
 
 
         private bool TryString(string word, char currentState) {
+            if (States.Count == 0) {
+                return false;
+            }
+
             if (word.Length == 0)  {
                 if (States[currentState].Type == "Accepting") {
                     return true;
