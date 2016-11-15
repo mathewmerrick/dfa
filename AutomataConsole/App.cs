@@ -47,6 +47,7 @@ namespace AutomataApp {
                     Console.WriteLine("Type 'done' to finish building");
                     Console.WriteLine("Type 'add state' to create new state");
                     Console.WriteLine("Type 'add path' to create new path between states");
+					Console.WriteLine("Type 'delete state' to delete an already existing state");
                     while (true) {
                         Console.Write(":> ");
                         string sel = Console.ReadLine();
@@ -82,7 +83,14 @@ namespace AutomataApp {
                                 Console.WriteLine(automata.AddPath(pathstart, pathweight, pathstop));
 
                                 break;
-                        }
+
+							case "delete state":
+								Console.WriteLine("Enter the starting state for the desired path: ( ex. 'A', 'B' ...)");
+								Console.Write(":> ");
+								char deleteName = Convert.ToChar(Console.ReadLine());
+								Console.WriteLine(automata.DeleteState(deleteName));
+								break;
+						}
                     }
 
                 }
