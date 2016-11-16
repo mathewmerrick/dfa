@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AutomataApp.ViewModel;
 using AutomataEngine;
 using Microsoft.Win32;
@@ -28,7 +19,7 @@ namespace AutomataApp {
 
         // A local index for obtaining states within the wrap panel
         // "State A was modified, it's at index 0" 
-        private Dictionary<char, int> WrapPanelIndex = new Dictionary<char, int>();
+        public Dictionary<char, int> WrapPanelIndex = new Dictionary<char, int>();
 
         private MainViewModel VM;
 
@@ -42,6 +33,7 @@ namespace AutomataApp {
             for (int i = 0; i < 26; i++) {
                 nameComboBox.Items.Add( Convert.ToChar(i+65) );
             }
+
         }
 
 
@@ -204,19 +196,18 @@ namespace AutomataApp {
         }
 
 
-
-
-
         // Event handler for changing events
         private void AutomataChangedEventHandler(object sender, PropertyChangedEventArgs e) {
             if (e.PropertyName == "State") {
 
                 var state = (KeyValuePair<char, AutomataGraph.State>)sender;
 
-
                 AddRectangle(state.Key, ConvertStateToText(state.Key, state.Value.Type, state.Value.Paths));
                 
             }
+
+
+
             UpdateDropDowns();
         }
 
