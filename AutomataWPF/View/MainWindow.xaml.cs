@@ -94,6 +94,14 @@ namespace AutomataApp {
                 WrapPanelIndex.Remove(stateName);
                 UpdateDropDowns();
             }
+
+            // This is gross, need to seperate view and viewmodel more
+            // Loop through each item and set new index after delete
+            int i = 0;
+            foreach (Border element in AutomataWrapPanel.Children) {
+                WrapPanelIndex[Convert.ToChar(element.Name)] = i;
+                i++;
+            }
         }
 
 
@@ -205,8 +213,6 @@ namespace AutomataApp {
                 AddRectangle(state.Key, ConvertStateToText(state.Key, state.Value.Type, state.Value.Paths));
                 
             }
-
-
 
             UpdateDropDowns();
         }

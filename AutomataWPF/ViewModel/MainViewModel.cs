@@ -20,8 +20,6 @@ namespace AutomataApp.ViewModel {
         public event PropertyChangedEventHandler AutomataChanged;
 
 
-
-
         private AutomataGraph _automata;
 
         public MainViewModel() {
@@ -63,7 +61,6 @@ namespace AutomataApp.ViewModel {
 
         public bool addState(char name, string type) {
             return _automata.AddState(name, type);
-
         }
 
         public void addPath(char startState, int weight, char targetState) {
