@@ -17,15 +17,27 @@ namespace AutomataApp.ViewModel {
         // Maintain a dictionary of states, corresponding with items in the stack panel
 
 
-        
-
         public event PropertyChangedEventHandler AutomataChanged;
+
+
+
 
         private AutomataGraph _automata;
 
         public MainViewModel() {
             _automata = new AutomataGraph();
+            _automata.StateChanged += AutomataChanged;
+            StateTypes = new [] { "Starting", "Transition", "Accepting" };
         }
+
+
+
+        private string[] _stateTypes;
+        public string[] StateTypes {
+            get { return _stateTypes; }
+            set { _stateTypes = value; }
+        }
+
 
 
         public void Load(string filename) {
@@ -51,6 +63,7 @@ namespace AutomataApp.ViewModel {
 
         public bool addState(char name, string type) {
             return _automata.AddState(name, type);
+
         }
 
         public void addPath(char startState, int weight, char targetState) {

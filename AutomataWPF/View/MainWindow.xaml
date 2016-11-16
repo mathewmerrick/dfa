@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutomataApp"
-        xmlns:Properties="clr-namespace:AutomataApp.Properties" x:Class="AutomataApp.MainWindow"
+        xmlns:Properties="clr-namespace:AutomataApp.Properties" xmlns:ViewModel="clr-namespace:AutomataApp.ViewModel" x:Class="AutomataApp.MainWindow"
         mc:Ignorable="d"
         Title="Automata App - [Git-Lucky]" Height="540" Width="911.667"  BorderBrush="Black" OpacityMask="Black">
+    <Window.DataContext>
+        <ViewModel:MainViewModel/>
+    </Window.DataContext>
     <Grid>
         <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
             <MenuItem Header="_File" Background="White">
@@ -26,13 +29,9 @@
 
         <ComboBox x:Name="nameComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,46" Width="112" Height="22"/>
 
-        <ComboBox x:Name="typeComboBox" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,19" Width="112" Height="22">
-            <ComboBoxItem Content="Starting"/>
-            <ComboBoxItem Content="Transition"/>
-            <ComboBoxItem Content="Accepting"/>
-        </ComboBox>
+        <ComboBox x:Name="typeComboBox" ItemsSource="{Binding StateTypes}" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,19" Width="112" Height="22"/>
 
-        <ComboBox x:Name="pathStartComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="325,0,451,47" Width="38" Height="22"/>
+        <ComboBox x:Name="pathStartComboBox"  SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="325,0,451,47" Width="38" Height="22"/>
         <ComboBox x:Name="pathWeightComboBox" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="368,0,408,46" Width="38" Height="22">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="0"/>

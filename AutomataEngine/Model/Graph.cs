@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,6 +14,8 @@ namespace AutomataEngine {
         public Dictionary<char, State> States;
 
         private bool starting = false;
+
+        public event PropertyChangedEventHandler StateChanged;
 
         public class State {
             public string Type; // Starting, Accepting, Transition
@@ -99,6 +102,16 @@ namespace AutomataEngine {
                     Console.WriteLine($"   Path: weight = {weight} target = {target}");
 
                     s.Paths.Add(weight, target);
+                }
+
+                if (s.Type == "Starting") {
+                    if (starting == false) {
+                        starting = true;
+                    }
+                    else {
+                        continue;
+                    }
+                    
                 }
 
                 States.Add(stateName, s);
