@@ -39,11 +39,18 @@ namespace AutomataApp.ViewModel {
 
 
         public void Load(string filename) {
-            _automata = new AutomataGraph();
-            _automata.Read(filename);
-            foreach (KeyValuePair<char, AutomataGraph.State> entry in _automata.States) {
-                AutomataChanged?.Invoke(entry, new PropertyChangedEventArgs("State"));
+            try {
+                AutomataGraph newAutomata = new AutomataGraph();
+                newAutomata.Read(filename);
+                _automata.StateChanged -= AutomataChanged;
+                _automata = newAutomata;
+                _automata.StateChanged += AutomataChanged;
+                AutomataChanged?.Invoke(filename, new PropertyChangedEventArgs("Refresh"));
+                foreach (KeyValuePair<char, AutomataGraph.State> entry in _automata.States) {
+                    AutomataChanged?.Invoke(entry, new PropertyChangedEventArgs("State"));
+                }
             }
+            catch {}
         }
 
 

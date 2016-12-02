@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -45,9 +46,6 @@ namespace AutomataApp {
             // Clear dropdown
             UpdateDropDowns();
 
-            // Flush Wrap Panel
-            AutomataWrapPanel.Children.Clear();
-
             OpenFileDialog open = new OpenFileDialog();
 
             open.Filter = "Automata|*.xml";
@@ -56,7 +54,6 @@ namespace AutomataApp {
                 open.ShowDialog();
                 string filename = open.FileName;
                 VM.Load(filename);
-
             }
             catch {
                 MessageBoxButton button = MessageBoxButton.OK;
@@ -206,6 +203,11 @@ namespace AutomataApp {
 
         // Event handler for changing events
         private void AutomataChangedEventHandler(object sender, PropertyChangedEventArgs e) {
+
+            if (e.PropertyName == "Refresh") {
+                AutomataWrapPanel.Children.Clear();
+            }
+                
             if (e.PropertyName == "State") {
 
                 var state = (KeyValuePair<char, AutomataGraph.State>)sender;
@@ -230,12 +232,10 @@ namespace AutomataApp {
                 save.ShowDialog();
                 string filename = save.FileName;
                 VM.Save(filename);
-                
-
             }
             catch {
                 MessageBoxButton button = MessageBoxButton.OK;
-                MessageBox.Show("Error in loading file", "Error", button);
+                MessageBox.Show("Error in saving file", "Error", button);
             }
         }
 
