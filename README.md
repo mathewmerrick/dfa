@@ -57,15 +57,18 @@ The DFA created by ```start``` is as follows
 
 
 ---
-Known Bugs / TODO's:
 
-- States can not be more than one character long 
-- Paths can only be a 1 or a 0
-- There needs to be more checking to ensure that a user is entering a "valid" DFA.
-- There is no current implementation which allows a user to edit a DFA after going through the create process
+Below is an example of using the WPF to interact with a DFA
 
+## Load a DFA from an XML file
+![load](Resources/Images/load.png)
+![demo_view](Resources/Images/demo_view.PNG)
 
+## Use the controls in the bottom right to check to see if a state is accepted by the DFA
+![accpepted](Resources/Images/accepted.PNG)
+![not_accepted](Resources/Images/not_accepted.PNG)
 
-
-
+## Create a Custom DFA using the Add State and/or Add Path controls
+Note: Duplicate states cannot be created, and paths will be overwritten. Also, there can only be one starting state in a DFA
+![custom_dfa](Resources/Images/custom_dfa.PNG)
 
