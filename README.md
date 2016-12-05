@@ -69,6 +69,10 @@ Below is an example of using the WPF to interact with a DFA
 ![not_accepted](Resources/Images/not_accepted.PNG)
 
 ## Create a Custom DFA using the Add State and/or Add Path controls
-Note: Duplicate states cannot be created, and paths will be overwritten. Also, there can only be one starting state in a DFA
-![custom_dfa](Resources/Images/custom_dfa.PNG)
+Note: Duplicate states cannot be created, and paths will be overwritten. Also, there can only be one starting state in a DFA.
+Word accepted in custom DFA made in UI:
+![custom_accepted_dfa](Resources/Images/custom_dfa.PNG)
+
+Word not accepted in custom DFA made in UI:
+![custom_not_accepteddfa](Resources/Images/custom_not_accepted.PNG)
 
