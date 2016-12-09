@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -49,13 +50,16 @@ namespace AutomataApp {
             OpenFileDialog open = new OpenFileDialog();
 
             open.Filter = "Automata|*.xml";
-
+            Dictionary<char, int> copyWrapPanelIndex = new Dictionary<char, int>(WrapPanelIndex);
             try {
+                
+                WrapPanelIndex.Clear();
                 open.ShowDialog();
                 string filename = open.FileName;
                 VM.Load(filename);
             }
             catch {
+                WrapPanelIndex = new Dictionary<char, int>(copyWrapPanelIndex);
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBox.Show("Error in loading file", "Error", button);
             }
@@ -253,6 +257,34 @@ namespace AutomataApp {
             }
             else {
                 evalResult.Content = "Not Accepted";
+            }
+        }
+        
+        private void button_Click(object sender, RoutedEventArgs e) {
+            try {
+                WrapPanelIndex.Clear();
+                string filename = "../../../demo.xml";
+                VM.Load(filename);
+                evaluateTextBox.Text = "1011";
+                var accepted = VM.Evaluate(evaluateTextBox.Text);
+                if (accepted) {
+                    evalResult.Content = "Accepted";
+                }
+                else {
+                    evalResult.Content = "Not Accepted";
+                }
+
+                string demoCommands = "Demo DFA Loaded\r\n\r\n" +
+                                      "Use the evaluate box in the bottom to enter these strings: \r\n\r\n" +
+                                      "1011 - Accepted by the DFA \r\n" +
+                                      "10111 - Not accepted by the DFA \r\n\r\n" +
+                                      "Then press \"Evaluate\" to show if the string is accepted by the DFA";
+                Thread demo = new Thread(() => MessageBox.Show(demoCommands, "Demo Loaded", MessageBoxButton.OK));
+                demo.Start();
+            }
+            catch {
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBox.Show("Error in loading file", "Error", button);
             }
         }
     }
