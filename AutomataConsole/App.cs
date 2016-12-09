@@ -27,6 +27,15 @@ namespace AutomataApp {
                 if (selection == "load demo") {
                     Console.WriteLine("Loading demo.xml");
                     automata = new AutomataGraph("../../../demo.xml");
+
+					//Show both an accepted, and unaccepted string for the loaded Automata.
+					Console.WriteLine("\nRunning Test Cases...");
+					Console.WriteLine("Testing 'Accepted' String: '10100'");
+					Console.WriteLine(automata.TestString("10100"));
+
+					Console.WriteLine("Testing 'Unaccepted String: '011101010");
+					Console.WriteLine(automata.TestString("011101010"));
+
                     break;
                 }
                 if (selection == "load existing") {
