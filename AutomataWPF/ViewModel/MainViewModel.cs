@@ -50,7 +50,9 @@ namespace AutomataApp.ViewModel {
                     AutomataChanged?.Invoke(entry, new PropertyChangedEventArgs("State"));
                 }
             }
-            catch {}
+            catch (Exception e) {
+                var t = e.ToString();
+            }
         }
 
 
@@ -60,10 +62,6 @@ namespace AutomataApp.ViewModel {
 
         public void DeleteState(char stateName) {
             _automata.DeleteState(stateName);
-        }
-
-        public void DeletePath(char startState, int weight, char targetState) {
-            
         }
 
         public bool addState(char name, string type) {

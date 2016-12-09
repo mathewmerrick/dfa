@@ -50,6 +50,7 @@
         <TextBox x:Name="evaluateTextBox" GotFocus="TextBox_GotFocus" HorizontalAlignment="Right" Height="22" Margin="0,0,96,46" TextWrapping="Wrap" Text="Enter String to Evaluate" VerticalAlignment="Bottom" Width="136"/>
         <Button x:Name="addPath_Copy" Click="Evaluate_OnClickPath" Content="Evaluate" HorizontalAlignment="right" Margin="0,0,16,46" VerticalAlignment="Bottom" Width="75" Height="22"/>
         <Label x:Name="evalResult" Content="" HorizontalAlignment="Right" Margin="0,0,96,20" VerticalAlignment="Bottom" RenderTransformOrigin="-3.842,0.462" Width="136" BorderBrush="Black" BorderThickness="0" Height="27"/>
+        <Button x:Name="button" Content="DEMO" HorizontalAlignment="Right" Margin="0,0,16,21" VerticalAlignment="Bottom" Width="75" Background="#FF00FF4D" IsCancel="True" Click="button_Click"/>
 
 
 
