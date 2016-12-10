@@ -24,7 +24,7 @@ When building and running AutomataConsole, the user is presented with a pseudo "
 - ```start``` Initiates the process to create a DFA
 
 ---
-The DFA created by ```load demo``` has a structure as follows
+The DFA created by the  ```load demo``` has a structure as follows
 
 *State A:*
 - Starting
@@ -63,6 +63,11 @@ Below is an example of using the WPF to interact with a DFA
 ## Load a DFA from an XML file
 ![load](Resources/Images/load.png)
 ![demo_view](Resources/Images/demo_view.PNG)
+
+## Test the program using the built in 'DEMO' button
+![Demo](Resources/Images/Demo.PNG)
+![Demo_Accepted](Resources/Images/Demo_Accepted.PNG)
+![Demo_Not](Resources/Images/Demo_Not.PNG)
 
 ## Use the controls in the bottom right to check to see if a state is accepted by the DFA
 ![accpepted](Resources/Images/accepted.PNG)
