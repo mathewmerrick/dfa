@@ -2,9 +2,9 @@
 [![Build Status](https://build.mathewmerrick.com/buildStatus/icon?job=git-lucky)](https://build.mathewmerrick.com/job/git-lucky)
 
 ## Devs
-- Jomar Dimaculangan (Contact Person) : j.dimaculangan@wsu.edu 
-- Mathew Merrick : 
-- Devon Honig : 
+- Jomar Dimaculangan : Manager
+- Mathew Merrick : Developer
+- Devon Honig : Organizer
 
 git-lucky will be creating a deterministic finite automata machine which will allow users to load, create, save and edit and check to see if a string exists within a DFA.
 
